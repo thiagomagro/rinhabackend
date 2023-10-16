@@ -1,7 +1,7 @@
 # Rinha de BackEnd -> Redis + Bun
 
 ## Setting up
-Utilizar Redis como primary Database, seguindo as outras regras da rinhadebackend em uma aplicação Bun + Redis, sem cache e sem pools de conexões, escrevendo JSON direto no Redis.
+O objetivo aqui foi utilizar Redis como primary Database, seguindo as outras regras da rinhadebackend em uma aplicação Bun + Redis, sem cache e sem pools de conexões, escrevendo JSON direto no Redis.
 Para rodar esse projeto basta baixar o repósitorio, criar a imagem Docker com o comando (de dentro do pasta do projeto):
 ```bash
 build -t app/rinhabackend_bun .
