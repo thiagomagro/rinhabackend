@@ -13,7 +13,7 @@ Depois de criada a imagem docker, basta executar o docker compose:
 docker-compose up
 ```
 
-##Testing
+## Testing
 Com o projeto rodando, basta executar os testes com o Gatling, que esta no repositório da Rinha [aqui](https://github.com/zanfranceschi/rinha-de-backend-2023-q3/tree/main)
 
 Os resultados desse projeto estao (publicados aqui)[https://thiagomagro.github.io/rinhabackend/resultados]
