@@ -22,7 +22,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
+          cpus: '0.5'
           memory: '0.5GB'
   api2: # API - Instância 01
     image: app/rinhabackend_bun
@@ -46,7 +46,7 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '0.25'
+          cpus: '0.5'
           memory: '0.5GB'
   nginx: # Load Balancer
     image: nginx:latest
@@ -69,5 +69,5 @@ services:
     deploy:
         resources:
           limits:
-            cpus: '0.75'
+            cpus: '0.25'
             memory: '1.5GB'

@@ -21,8 +21,8 @@ if(process.env.NODE_ENV=="prod"){
   redis_host="host.docker.internal";
 }
 
-console.log('REDIS_HOST');
-console.log(redis_host);
+// console.log('REDIS_HOST');
+// console.log(redis_host);
 
 const client = createClient({
   socket: {
@@ -40,7 +40,7 @@ function escape_string(str) {
 
 async function command(cmd_string) {
   // console.log(cmd_string.split(' '));
-  console.log(await client.sendCommand(cmd_string.split(' ')));
+  // console.log(await client.sendCommand(cmd_string.split(' ')));
 }
 
 async function command_json(cmd_string, json_string, cmd_string_end) {
@@ -62,8 +62,8 @@ client.on('error', err => console.log('Redis Client Error', err));
 
 await client.connect();
 try {
-  console.log(await client.ft.info("pessoa_idx"))
-  console.log(await client.ft.dropIndex("pessoa_idx"))
+  await client.ft.info("pessoa_idx");
+  await client.ft.dropIndex("pessoa_idx");
 } catch (e) {
   console.log(e);
 }
@@ -109,7 +109,7 @@ const app = new Elysia()
 
 app.get('/pessoas/:id', async ({ params: { id } }) => {
   // let pessoa = await client.sAdd('apelidos', body.apelido);
-  console.log(`Get Pessoa ${id}`)
+  // console.log(`Get Pessoa ${id}`)
   // f4c7888c-6966-11ee-8b7f-daa61c5665de
   let pessoa = client.json.get(`pessoa:${id}`)
   pessoa.nascimento = dayjs(pessoa.nascimento).format('YYYY-MM-DD');
@@ -117,7 +117,7 @@ app.get('/pessoas/:id', async ({ params: { id } }) => {
 })
 
 app.get('/contagem-pessoas', async () => {
-  console.log("Contagem")
+  // console.log("Contagem")
   let count = await client.sCard("apelidos");
   return count
 });
@@ -143,7 +143,7 @@ app.post('/pessoas', async ({ body, set }) => {
   pessoa.nascimento = dayjs(pessoa.nascimento).valueOf();
 
   let result = pessoaSchema.safeParse(pessoa);
-  console.log(result.error)
+  // console.log(result.error)
   if (!result.success) {
     set.status = 422
     return;
@@ -156,7 +156,7 @@ app.post('/pessoas', async ({ body, set }) => {
   }
   pessoa.id = crypto.randomUUID();
   let idx = "pessoa:" + pessoa.id;
-  console.log(pessoa)
+  // console.log(pessoa)
 
   // let ret = await command_json(`JSON.SET pessoa:${pessoa.id} .`, JSON.stringify(pessoa));
 

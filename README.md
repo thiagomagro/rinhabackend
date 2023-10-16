@@ -1,15 +1,20 @@
-# Elysia with Bun runtime
+# Rinha de BackEnd -> Redis + Bun
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
+## Setting up
+Utilizar Redis como primary Database, seguindo as outras regras da rinhadebackend em uma aplicação Bun + Redis, sem cache e sem pools de conexões, escrevendo JSON direto no Redis.
+Para rodar esse projeto basta baixar o repósitorio, criar a imagem Docker com o comando (de dentro do pasta do projeto):
 ```bash
-bun create elysia ./elysia-example
+build -t app/rinhabackend_bun .
 ```
 
-## Development
-To start the development server run:
+## Running
+Depois de criada a imagem docker, basta executar o docker compose:
 ```bash
-bun run dev
+docker-compose up
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+##Testing
+Com o projeto rodando, basta executar os testes com o Gatling, que esta no repositório da Rinha [aqui](https://github.com/zanfranceschi/rinha-de-backend-2023-q3/tree/main)
+
+Os resultados desse projeto estao (publicados aqui)[https://thiagomagro.github.io/rinhabackend/resultados]
+
